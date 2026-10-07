@@ -1,0 +1,80 @@
+version: 0.1
+
+# Generated/uploaded by the API Device Farm worker. Do not paste this into the AWS console.
+# Placeholders __WEPLAY_GOOGLE_EMAIL_B64__, __WEPLAY_GOOGLE_EMAILS_B64__, __WEPLAY_PLAY_STORE_EMAIL_B64__, and __WEPLAY_GOOGLE_PASSWORD_B64__ are filled by the backend.
+
+android_test_host: amazon_linux_2
+
+phases:
+  install:
+    commands:
+      - devicefarm-cli use node 22
+      - node --version
+      - devicefarm-cli use appium 3
+      - appium --version
+      - export APPIUM_BASE_PATH=
+      - devicefarm-cli use python 3.12
+      - python --version
+      - cd $DEVICEFARM_TEST_PACKAGE_PATH
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
+      - export PYTHONPATH=$DEVICEFARM_TEST_PACKAGE_PATH:$PYTHONPATH
+
+  pre_test:
+    commands:
+      - 'echo "Fresh-device worker: Play Store install of WePlay is performed by the test, not by DEVICEFARM_APP_PATH"'
+      - adb shell pm path com.wejoy.weplay.ar || echo "WePlay not installed yet (expected on a fresh device)"
+      - echo "Setting temporary device PIN 1234 for Google Confirm Device Credential"
+      - adb shell locksettings set-pin "1234"
+      - |-
+        appium --base-path=$APPIUM_BASE_PATH --log-timestamp \
+          --log-no-colors --relaxed-security --default-capabilities \
+          "{\"appium:deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \
+          \"platformName\": \"$DEVICEFARM_DEVICE_PLATFORM_NAME\", \
+          \"appium:udid\":\"$DEVICEFARM_DEVICE_UDID\", \
+          \"appium:platformVersion\": \"$DEVICEFARM_DEVICE_OS_VERSION\", \
+          \"appium:automationName\": \"UiAutomator2\", \
+          \"appium:noReset\": true, \
+          \"appium:autoLaunch\": false}" \
+          >> $DEVICEFARM_LOG_DIR/appium.log 2>&1 &
+      - |-
+        appium_initialization_time=0;
+        until curl --silent --fail "http://0.0.0.0:4723${APPIUM_BASE_PATH}/status"; do
+          if [[ $appium_initialization_time -gt 30 ]]; then
+            echo "Appium did not start within 30 seconds. Exiting...";
+            exit 1;
+          fi;
+          appium_initialization_time=$((appium_initialization_time + 1));
+          echo "Waiting for Appium to start on port 4723...";
+          sleep 1;
+        done;
+
+  test:
+    commands:
+      - cd $DEVICEFARM_TEST_PACKAGE_PATH
+      - export PYTHONPATH=$DEVICEFARM_TEST_PACKAGE_PATH:$PYTHONPATH
+      - export WEPLAY_GOOGLE_EMAIL=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_GOOGLE_EMAIL_B64__').decode())")
+      - export WEPLAY_GOOGLE_EMAILS=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_GOOGLE_EMAILS_B64__').decode())")
+      - export WEPLAY_PLAY_STORE_EMAIL=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_PLAY_STORE_EMAIL_B64__').decode())")
+      - export WEPLAY_GOOGLE_PASSWORD=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_GOOGLE_PASSWORD_B64__').decode())")
+      - export WEPLAY_GAME_CODE=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_GAME_CODE_B64__').decode())")
+      - export WEPLAY_RUN_MODE=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_RUN_MODE_B64__').decode())")
+      - export WEPLAY_SUPPORT_TARGET=$(python3 -c "import base64; print(base64.b64decode('__WEPLAY_SUPPORT_TARGET_B64__').decode())")
+      - echo "WEPLAY_GOOGLE_EMAIL is ${WEPLAY_GOOGLE_EMAIL:+set}"
+      - echo "WEPLAY_GOOGLE_EMAILS is ${WEPLAY_GOOGLE_EMAILS:+set}"
+      - echo "WEPLAY_PLAY_STORE_EMAIL is ${WEPLAY_PLAY_STORE_EMAIL:+set}"
+      - echo "WEPLAY_GOOGLE_PASSWORD is ${WEPLAY_GOOGLE_PASSWORD:+set}"
+      - echo "WEPLAY_GAME_CODE is ${WEPLAY_GAME_CODE:+set}"
+      - echo "WEPLAY_RUN_MODE is ${WEPLAY_RUN_MODE:-provision}"
+      - echo "WEPLAY_SUPPORT_TARGET is ${WEPLAY_SUPPORT_TARGET:+set}"
+      - python -m pytest tests/test_weplay_devicefarm_provision.py -vv --tb=short -o log_cli=true -o log_cli_level=INFO
+
+  post_test:
+    commands:
+      - echo "Clearing temporary device PIN 1234 (runs even if pytest failed)"
+      - adb shell locksettings clear --old "1234" || echo "PIN clear returned non-zero; check whether the PIN is still set"
+      - cp -f $DEVICEFARM_LOG_DIR/appium.log $DEVICEFARM_LOG_DIR/appium-copy.log || true
+      - cp -f $DEVICEFARM_LOG_DIR/provisioning-result.json $DEVICEFARM_LOG_DIR/provisioning-result-copy.json || true
+
+artifacts:
+  - $DEVICEFARM_LOG_DIR

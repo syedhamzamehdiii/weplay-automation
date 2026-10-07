@@ -1,0 +1,25 @@
+{
+  "name": "weplay-automation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "WePlay automation management system",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "pnpm --filter @weplay/api --filter @weplay/web --parallel dev",
+    "usb-worker": "pnpm --filter @weplay/usb-worker start",
+    "build": "pnpm --filter @weplay/types build && pnpm --filter @weplay/shared build && pnpm --filter @weplay/config build && pnpm --filter @weplay/api build && pnpm --filter @weplay/web build",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "vitest run tests/e2e",
+    "lint": "pnpm -r --if-present lint"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

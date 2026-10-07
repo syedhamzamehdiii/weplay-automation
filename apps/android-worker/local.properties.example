@@ -1,0 +1,3 @@
+# Copy to local.properties (Android Studio also generates sdk.dir)
+# sdk.dir=/Users/you/Library/Android/sdk
+API_BASE_URL=http://10.0.2.2:3001

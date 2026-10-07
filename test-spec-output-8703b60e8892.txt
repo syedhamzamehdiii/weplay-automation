@@ -1,0 +1,908 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use node 22
+[DeviceFarm] node --version
+v22.22.0
+[DeviceFarm] devicefarm-cli use appium 3
+[DeviceFarm] appium --version
+3.1.0
+[DeviceFarm] export APPIUM_BASE_PATH=
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python --version
+Python 3.12.12
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] python -m pip install --upgrade pip
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in /var/devicefarm/runtime/python_3_12/lib/python3.12/site-packages (25.0.1)
+Collecting pip
+  Downloading pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+Downloading pip-26.2.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 65.8 MB/s eta 0:00:00
+Installing collected packages: pip
+Successfully installed pip-26.2.1
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip
+[DeviceFarm] python -m pip install -r requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Collecting pytest<9,>=7 (from -r requirements.txt (line 1))
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting Appium-Python-Client<6,>=4 (from -r requirements.txt (line 2))
+  Downloading appium_python_client-5.3.1-py3-none-any.whl.metadata (20 kB)
+Collecting iniconfig>=1 (from pytest<9,>=7->-r requirements.txt (line 1))
+  Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=20 (from pytest<9,>=7->-r requirements.txt (line 1))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest<9,>=7->-r requirements.txt (line 1))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest<9,>=7->-r requirements.txt (line 1))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting selenium<5.0,>=4.26 (from Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading selenium-4.48.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting typing-extensions~=4.13 (from Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting certifi>=2026.2.25 (from selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting trio<1.0,>=0.31.0 (from selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading trio-0.34.0-py3-none-any.whl.metadata (8.5 kB)
+Collecting trio-websocket<1.0,>=0.12.2 (from selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading trio_websocket-0.12.2-py3-none-any.whl.metadata (5.1 kB)
+Collecting urllib3<3.0,>=2.6.3 (from urllib3[socks]<3.0,>=2.6.3->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting websocket-client<2.0,>=1.8.0 (from selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading websocket_client-1.9.1-py3-none-any.whl.metadata (8.3 kB)
+Collecting attrs>=23.2.0 (from trio<1.0,>=0.31.0->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting sortedcontainers (from trio<1.0,>=0.31.0->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting idna (from trio<1.0,>=0.31.0->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+Collecting outcome (from trio<1.0,>=0.31.0->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+Collecting sniffio>=1.3.0 (from trio<1.0,>=0.31.0->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting wsproto>=0.14 (from trio-websocket<1.0,>=0.12.2->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+Collecting pysocks!=1.5.7,<2.0,>=1.5.6 (from urllib3[socks]<3.0,>=2.6.3->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Collecting h11<1,>=0.16.0 (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium<5.0,>=4.26->Appium-Python-Client<6,>=4->-r requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading appium_python_client-5.3.1-py3-none-any.whl (351 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading selenium-4.48.0-py3-none-any.whl (9.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 209.8 MB/s  0:00:00
+Downloading trio-0.34.0-py3-none-any.whl (511 kB)
+Downloading trio_websocket-0.12.2-py3-none-any.whl (21 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+Downloading websocket_client-1.9.1-py3-none-any.whl (95 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Downloading outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 101.6 MB/s  0:00:00
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading wsproto-1.3.2-py3-none-any.whl (24 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.19-py3-none-any.whl (68 kB)
+Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Installing collected packages: sortedcontainers, websocket-client, urllib3, typing-extensions, sniffio, pysocks, pygments, pluggy, packaging, iniconfig, idna, h11, certifi, attrs, wsproto, pytest, outcome, trio, trio-websocket, selenium, Appium-Python-Client
+
+Successfully installed Appium-Python-Client-5.3.1 attrs-26.1.0 certifi-2026.7.22 h11-0.16.0 idna-3.19 iniconfig-2.3.0 outcome-1.3.0.post0 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pysocks-1.7.1 pytest-8.4.2 selenium-4.48.0 sniffio-1.3.1 sortedcontainers-2.4.0 trio-0.34.0 trio-websocket-0.12.2 typing-extensions-4.16.0 urllib3-2.7.0 websocket-client-1.9.1 wsproto-1.3.2
+[DeviceFarm] export PYTHONPATH=$DEVICEFARM_TEST_PACKAGE_PATH:$PYTHONPATH
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] echo "Fresh-device worker: Play Store install of WePlay is performed by the test, not by DEVICEFARM_APP_PATH"
+Fresh-device worker: Play Store install of WePlay is performed by the test, not by DEVICEFARM_APP_PATH
+[DeviceFarm] adb shell pm path com.wejoy.weplay.ar || echo "WePlay not installed yet (expected on a fresh device)"
+WePlay not installed yet (expected on a fresh device)
+[DeviceFarm] echo "Setting temporary device PIN 1234 for Google Confirm Device Credential"
+Setting temporary device PIN 1234 for Google Confirm Device Credential
+[DeviceFarm] adb shell locksettings set-pin "1234"
+Pin set to '1234'
+[DeviceFarm] appium --base-path=$APPIUM_BASE_PATH --log-timestamp \
+  --log-no-colors --relaxed-security --default-capabilities \
+  "{\"appium:deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \
+  \"platformName\": \"$DEVICEFARM_DEVICE_PLATFORM_NAME\", \
+  \"appium:udid\":\"$DEVICEFARM_DEVICE_UDID\", \
+  \"appium:platformVersion\": \"$DEVICEFARM_DEVICE_OS_VERSION\", \
+  \"appium:automationName\": \"UiAutomator2\", \
+  \"appium:noReset\": true, \
+  \"appium:autoLaunch\": false}" \
+  >> $DEVICEFARM_LOG_DIR/appium.log 2>&1 &
+[DeviceFarm] appium_initialization_time=0;
+until curl --silent --fail "http://0.0.0.0:4723${APPIUM_BASE_PATH}/status"; do
+  if [[ $appium_initialization_time -gt 30 ]]; then
+    echo "Appium did not start within 30 seconds. Exiting...";
+    exit 1;
+  fi;
+  appium_initialization_time=$((appium_initialization_time + 1));
+  echo "Waiting for Appium to start on port 4723...";
+  sleep 1;
+done;
+Waiting for Appium to start on port 4723...
+{"value":{"ready":true,"message":"The server is ready to accept new connections","build":{"version":"3.1.0"}}} 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] export PYTHONPATH=$DEVICEFARM_TEST_PACKAGE_PATH:$PYTHONPATH
+[DeviceFarm] export WEPLAY_GOOGLE_EMAIL=$(python3 -c "import base64; print(base64.b64decode('c2hha2VlbEBidXNpbmVzc2Rvc3Qub25saW5l').decode())")
+[DeviceFarm] export WEPLAY_GOOGLE_PASSWORD=$(python3 -c "import base64; print(base64.b64decode('eFh5TzhTQ2trUWU3R25meW5yaHFEWnpnMVhtUGVHaVhBYTEh').decode())")
+[DeviceFarm] echo "WEPLAY_GOOGLE_EMAIL is ${WEPLAY_GOOGLE_EMAIL:+set}"
+WEPLAY_GOOGLE_EMAIL is set
+[DeviceFarm] echo "WEPLAY_GOOGLE_PASSWORD is ${WEPLAY_GOOGLE_PASSWORD:+set}"
+WEPLAY_GOOGLE_PASSWORD is set
+[DeviceFarm] python -m pytest tests/test_weplay_devicefarm_provision.py -vv --tb=short
+============================= test session starts ==============================
+platform linux -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0 -- /home/device-farm/.devicefarm_cli/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/devicefarm-workspace/execution-9b4j8_bp/test-package-ffmzqqku
+collecting ... collected 1 item
+
+tests/test_weplay_devicefarm_provision.py::test_weplay_devicefarm_provision FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_weplay_devicefarm_provision _______________________
+tests/test_weplay_devicefarm_provision.py:47: in test_weplay_devicefarm_provision
+    result = run_provision(driver)
+             ^^^^^^^^^^^^^^^^^^^^^
+weplay_df/provision.py:65: in run_provision
+    add_workspace_account(driver, email)
+weplay_df/google_account.py:150: in add_workspace_account
+    raise FlowError(
+E   weplay_df.errors.FlowError: google_account: Could not add Workspace account sh***@businessdost.online to the device in time.
+
+During handling of the above exception, another exception occurred:
+tests/test_weplay_devicefarm_provision.py:51: in test_weplay_devicefarm_provision
+    pytest.fail(str(exc))
+E   Failed: google_account: Could not add Workspace account sh***@businessdost.online to the device in time.
+------------------------------ Captured log call -------------------------------
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+WARNING  weplay.google:google_account.py:76 Identifier entry failed: Message: An element could not be located on the page using the given search parameters.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (/var/devicefarm/runtime/appium_3_x/node_modules/appium-android-driver/lib/commands/find.ts:93:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/commands/find.ts:76:12)
+    at runCommandPromise (/var/devicefarm/runtime/appium_3_x/node_modules/@appium/base-driver/lib/basedriver/driver.ts:123:16)
+=========================== short test summary info ============================
+FAILED tests/test_weplay_devicefarm_provision.py::test_weplay_devicefarm_provision - Failed: google_account: Could not add Workspace account sh***@businessdost.online to the device in time.
+======================== 1 failed in 194.17s (0:03:14) =========================
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] echo "Clearing temporary device PIN 1234 (runs even if pytest failed)"
+Clearing temporary device PIN 1234 (runs even if pytest failed)
+[DeviceFarm] adb shell locksettings clear --old "1234" || echo "PIN clear returned non-zero; check whether the PIN is still set"
+Lock credential cleared
+[DeviceFarm] cp -f $DEVICEFARM_LOG_DIR/appium.log $DEVICEFARM_LOG_DIR/appium-copy.log || true
+[DeviceFarm] cp -f $DEVICEFARM_LOG_DIR/provisioning-result.json $DEVICEFARM_LOG_DIR/provisioning-result-copy.json || true
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.
+Weplay@1234

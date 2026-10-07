@@ -1,0 +1,14 @@
+{
+  "identities": [
+    { "displayName": "google-owned-1", "loginProvider": "GOOGLE" },
+    { "displayName": "google-owned-2", "loginProvider": "GOOGLE" },
+    { "displayName": "google-owned-3", "loginProvider": "GOOGLE" },
+    { "displayName": "google-owned-4", "loginProvider": "GOOGLE" },
+    { "displayName": "facebook-owned-1", "loginProvider": "FACEBOOK" },
+    { "displayName": "facebook-owned-2", "loginProvider": "FACEBOOK" },
+    { "displayName": "facebook-owned-3", "loginProvider": "FACEBOOK" },
+    { "displayName": "x-owned-1", "loginProvider": "X" },
+    { "displayName": "x-owned-2", "loginProvider": "X" },
+    { "displayName": "x-owned-3", "loginProvider": "X" }
+  ]
+}
